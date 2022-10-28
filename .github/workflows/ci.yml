@@ -1,0 +1,23 @@
+on:
+  push:
+
+jobs:
+  continuous-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3.4.1
+        with:
+          node-version: 18
+      - name: Install
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Check formatting
+        run: npm run check-format
+      - name: Test
+        run: npm run test
+        env:
+          KALSHI_BASE_URL: ${{ secrets.KALSHI_BASE_URL }}
+          KALSHI_EMAIL: ${{ secrets.KALSHI_EMAIL }}
+          KALSHI_PASSWORD: ${{ secrets.KALSHI_PASSWORD }}

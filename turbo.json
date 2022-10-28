@@ -6,10 +6,22 @@
       "outputs": ["dist/**", ".next/**"]
     },
     "lint": {
-      "outputs": []
+      "outputs": [],
+      "cache": true
     },
     "dev": {
+      "dependsOn": ["^build"],
       "cache": false
+    },
+    "format": {
+      "cache": true
+    },
+    "clean": {
+      "cache": true
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"]
     }
   }
 }

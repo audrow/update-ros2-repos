@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.ts"],"sourcesContent":["export function main() {\n  console.log('Hello, world!')\n}\n\nmain()\n"],"mappings":";AAAO,SAAS,OAAO;AACrB,UAAQ,IAAI,eAAe;AAC7B;AAEA,KAAK;","names":[]}
