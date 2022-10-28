@@ -17,7 +17,3 @@ jobs:
         run: npm run check-format
       - name: Test
         run: npm run test
-        env:
-          KALSHI_BASE_URL: ${{ secrets.KALSHI_BASE_URL }}
-          KALSHI_EMAIL: ${{ secrets.KALSHI_EMAIL }}
-          KALSHI_PASSWORD: ${{ secrets.KALSHI_PASSWORD }}
