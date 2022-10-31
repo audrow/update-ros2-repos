@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getMaintainersInfo should parse maintainers info 1`] = `
+[
+  {
+    "email": "aditya.pande@openrobotics.org",
+    "id": "adityapande-1995",
+    "name": "Aditya Pande",
+  },
+  {
+    "email": "alejandro@openrobotics.org",
+    "id": "ahcorde",
+    "name": "Alejandro Hernandez Cordero",
+  },
+  {
+    "email": "audrow@openrobotics.org",
+    "id": "audrow",
+    "name": "Audrow Nash",
+  },
+  {
+    "email": "clalancette@openrobotics.org",
+    "id": "clalancette",
+    "name": "Chris Lalancette",
+  },
+  {
+    "email": "geoff@openrobotics.org",
+    "id": "gbiggs",
+    "name": "Geoffrey Biggs",
+  },
+  {
+    "email": "michel@ekumenlabs.com",
+    "id": "hidmic",
+    "name": "Michel Hidalgo",
+  },
+  {
+    "email": "ivanpauno@ekumenlabs.com",
+    "id": "ivanpauno",
+    "name": "Ivan Paunovic",
+  },
+  {
+    "email": "jacob@openrobotics.org",
+    "id": "jacobperron",
+    "name": "Jacob Perron",
+  },
+  {
+    "email": "mabel@openrobotics.org",
+    "id": "mabelzhang",
+    "name": "Mabel Zhang",
+  },
+  {
+    "email": "michael@openrobotics.org",
+    "id": "mjcarroll",
+    "name": "Michael Carroll",
+  },
+  {
+    "email": "michael.jeronimo@openrobotics.org",
+    "id": "mjeronimo",
+    "name": "Michael Jeronimo",
+  },
+  {
+    "email": "steven@openrobotics.org",
+    "id": "nuclearsandwich",
+    "name": "Steven! Ragnarök",
+  },
+  {
+    "email": "scpeters@openrobotics.org",
+    "id": "scpeters",
+    "name": "Steve Peters",
+  },
+  {
+    "email": "shane@openrobotics.org",
+    "id": "sloretz",
+    "name": "Shane Loretz",
+  },
+  {
+    "email": "tfoote@openrobotics.org",
+    "id": "tfoote",
+    "name": "Tully Foote",
+  },
+  {
+    "email": "william@openrobotics.org",
+    "id": "wjwwood",
+    "name": "William Woodall",
+  },
+]
+`;
+
+exports[`migrateMaintainersInfo should migrate maintainers info 1`] = `
+{
+  "maintainers": [
+    {
+      "email": "TODO@openrobotics.org",
+      "id": "bar",
+      "name": "TODO",
+    },
+    {
+      "email": "TODO@openrobotics.org",
+      "id": "baz",
+      "name": "TODO",
+    },
+    {
+      "email": "TODO@openrobotics.org",
+      "id": "foo",
+      "name": "TODO",
+    },
+  ],
+}
+`;
+
+exports[`migrateMaintainersInfo should migrate maintainers info with no old maintainers 1`] = `
+[
+  {
+    "email": "TODO@openrobotics.org",
+    "id": "bar",
+    "name": "TODO",
+  },
+  {
+    "email": "TODO@openrobotics.org",
+    "id": "baz",
+    "name": "TODO",
+  },
+  {
+    "email": "TODO@openrobotics.org",
+    "id": "foo",
+    "name": "TODO",
+  },
+]
+`;

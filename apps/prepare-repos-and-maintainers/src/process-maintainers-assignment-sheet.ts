@@ -1,43 +1,51 @@
-import fetch from "node-fetch"
+import {parse as csvParse} from 'csv-parse/sync'
+import {readFileSync} from 'fs'
+import fetch from 'node-fetch'
 import * as z from 'zod'
+
+const validUrlSchema = z.union([z.boolean(), z.enum(['not checked'])])
+type ValidUrl = z.infer<typeof validUrlSchema>
 
 const repoFromUrlSchema = z.object({
   org: z.string(),
   name: z.string(),
   url: z.string().url(),
-  validUrl: z.boolean().nullable(),
+  validUrl: validUrlSchema,
 })
 
 type RepoFromUrl = z.infer<typeof repoFromUrlSchema>
 
-const repoSchema = z.object({
-  maintainers: z.array(z.string().min(1)),
-}).merge(repoFromUrlSchema)
+const repoSchema = z
+  .object({
+    maintainers: z.array(z.string().min(1)).min(1),
+  })
+  .merge(repoFromUrlSchema)
 
 export type Repo = z.infer<typeof repoSchema>
 
-export async function getRepos({
-  maintainersCsvData,
+export async function processMaintainersAssignmentSheet({
+  path: path,
   headingRowNumber,
   maintainersStartColumnLetter,
   reposColumnLetter,
   githubUrlPrefix,
   isCheckUrls,
 }: {
-  maintainersCsvData: string[][]
+  path: string
   headingRowNumber: number
   maintainersStartColumnLetter: string
   reposColumnLetter: string
   githubUrlPrefix: string
   isCheckUrls: boolean
 }) {
-  const heading = maintainersCsvData[headingRowNumber - 1]
+  const assignmentData = csvParse(readFileSync(path)) as string[][]
+  const heading = assignmentData[headingRowNumber - 1]
   const people = z
     .array(z.string().min(2))
     .parse(heading.slice(letterToIndex(maintainersStartColumnLetter)))
 
   const repos = await Promise.all(
-    maintainersCsvData
+    assignmentData
       .splice(headingRowNumber)
       .filter((row: string[]) => {
         const repoString = row[letterToIndex(reposColumnLetter)]
@@ -76,7 +84,7 @@ export async function getRepos({
       }),
   )
 
-  const maintainers = repos.reduce((acc: string[], repo) => {
+  const maintainerIds = repos.reduce((acc: string[], repo) => {
     repo.maintainers.forEach((maintainer) => {
       if (!acc.includes(maintainer)) {
         acc.push(maintainer)
@@ -86,7 +94,7 @@ export async function getRepos({
   }, [])
 
   return {
-    maintainers,
+    maintainerIds,
     repos,
   }
 }
@@ -99,14 +107,7 @@ export async function getRepoFromString(
   const [org, name] = repoString.split('/')
   const url = `${githubUrlPrefix}${org}/${name}`
 
-  let validUrl: boolean | null = null
-  if (isCheckUrl) {
-    const {status} = await fetch(url)
-    validUrl = status === 200
-    if (validUrl === false) {
-      console.log(`repo ${url} returned status ${status}`)
-    }
-  }
+  const validUrl: ValidUrl = isCheckUrl ? await checkUrl(url) : 'not checked'
 
   return {
     org,
@@ -114,6 +115,15 @@ export async function getRepoFromString(
     url,
     validUrl,
   }
+}
+
+async function checkUrl(url: string): Promise<boolean> {
+  const {status} = await fetch(url)
+  const isValid = status === 200
+  if (isValid === false) {
+    console.log(`${url} returned status ${status}`)
+  }
+  return isValid
 }
 
 function letterToIndex(letter: string): number {
