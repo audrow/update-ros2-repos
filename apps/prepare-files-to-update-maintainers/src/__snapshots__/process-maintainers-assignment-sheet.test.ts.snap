@@ -215,7 +215,10 @@ exports[`processMaintainersAssignmentSheet should return repos 1`] = `
     "validUrl": "not checked",
   },
   {
-    "maintainers": [],
+    "maintainers": [
+      "clalancette",
+      "audrow",
+    ],
     "name": "rep",
     "org": "ros-infrastructure",
     "url": "https://github.com/ros-infrastructure/rep",
@@ -252,7 +255,9 @@ exports[`processMaintainersAssignmentSheet should return repos 1`] = `
     "validUrl": "not checked",
   },
   {
-    "maintainers": [],
+    "maintainers": [
+      "clalancette",
+    ],
     "name": "robot_state_publisher",
     "org": "ros",
     "url": "https://github.com/ros/robot_state_publisher",
@@ -316,14 +321,18 @@ exports[`processMaintainersAssignmentSheet should return repos 1`] = `
     "validUrl": "not checked",
   },
   {
-    "maintainers": [],
+    "maintainers": [
+      "clalancette",
+    ],
     "name": "urdfdom",
     "org": "ros",
     "url": "https://github.com/ros/urdfdom",
     "validUrl": "not checked",
   },
   {
-    "maintainers": [],
+    "maintainers": [
+      "clalancette",
+    ],
     "name": "pluginlib",
     "org": "ros",
     "url": "https://github.com/ros/pluginlib",
@@ -377,7 +386,9 @@ exports[`processMaintainersAssignmentSheet should return repos 1`] = `
     "validUrl": "not checked",
   },
   {
-    "maintainers": [],
+    "maintainers": [
+      "gbiggs",
+    ],
     "name": "class_loader",
     "org": "ros",
     "url": "https://github.com/ros/class_loader",
@@ -411,28 +422,37 @@ exports[`processMaintainersAssignmentSheet should return repos 1`] = `
     "validUrl": "not checked",
   },
   {
-    "maintainers": [],
+    "maintainers": [
+      "tfoote",
+      "audrow",
+    ],
     "name": "rosdoc2",
     "org": "ros-infrastructure",
     "url": "https://github.com/ros-infrastructure/rosdoc2",
     "validUrl": "not checked",
   },
   {
-    "maintainers": [],
+    "maintainers": [
+      "clalancette",
+    ],
     "name": "joint_state_publisher",
     "org": "ros",
     "url": "https://github.com/ros/joint_state_publisher",
     "validUrl": "not checked",
   },
   {
-    "maintainers": [],
+    "maintainers": [
+      "clalancette",
+    ],
     "name": "kdl_parser",
     "org": "ros",
     "url": "https://github.com/ros/kdl_parser",
     "validUrl": "not checked",
   },
   {
-    "maintainers": [],
+    "maintainers": [
+      "ahcorde",
+    ],
     "name": "ros_tutorials",
     "org": "ros",
     "url": "https://github.com/ros/ros_tutorials",

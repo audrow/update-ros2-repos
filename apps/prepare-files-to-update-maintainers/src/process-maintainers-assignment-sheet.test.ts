@@ -3,6 +3,7 @@ import {
   getRepoFromString,
   processMaintainersAssignmentSheet,
 } from './process-maintainers-assignment-sheet'
+import mockConsole from 'jest-mock-console'
 
 jest.setTimeout(10000)
 
@@ -53,6 +54,8 @@ describe('getRepoFromString', () => {
     `)
   })
   it("can't find url for a repo that doesn't exist", async () => {
+    const restoreConsole = mockConsole()
+
     const repoString = 'ros2/not-a-repo'
     const githubUrlPrefix = 'https://github.com/'
     const isCheckUrl = true
@@ -69,6 +72,8 @@ describe('getRepoFromString', () => {
         "validUrl": false,
       }
     `)
+
+    restoreConsole()
   })
   it('can skip checking a URL', async () => {
     const repoString = 'ros2/rclcpp'
