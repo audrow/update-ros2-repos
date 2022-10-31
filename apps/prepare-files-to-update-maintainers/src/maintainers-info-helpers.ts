@@ -2,7 +2,7 @@ import {readFileSync} from 'fs'
 import {load as loadYaml} from 'js-yaml'
 import * as z from 'zod'
 
-const maintainersInfoSchema = z.object({
+export const maintainersInfoSchema = z.object({
   maintainers: z.array(
     z.object({
       id: z.string(),
@@ -12,7 +12,7 @@ const maintainersInfoSchema = z.object({
   ),
 })
 
-type MaintainersInfo = z.infer<typeof maintainersInfoSchema>
+export type MaintainersInfo = z.infer<typeof maintainersInfoSchema>
 
 const maintainersMap = new Map<string, MaintainersInfo>()
 export function getMaintainersInfo(path: string) {

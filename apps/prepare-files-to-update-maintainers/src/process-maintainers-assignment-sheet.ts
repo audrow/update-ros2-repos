@@ -15,7 +15,7 @@ const repoFromUrlSchema = z.object({
 
 type RepoFromUrl = z.infer<typeof repoFromUrlSchema>
 
-const repoSchema = z
+export const repoSchema = z
   .object({
     maintainers: z.array(z.string().min(1)).min(1),
   })
