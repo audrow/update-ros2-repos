@@ -1,0 +1,1215 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`processMaintainersAssignmentSheet should return repos 1`] = `
+{
+  "repositories": [
+    {
+      "maintainers": [
+        "Accounted For",
+        "wjwwood",
+        "ivanpauno",
+        "hidmic",
+      ],
+      "name": "rclcpp",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rclcpp.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "sloretz",
+        "adityapande-1995",
+      ],
+      "name": "rclpy",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rclpy.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "clalancette",
+        "codebot",
+      ],
+      "name": "ros2",
+      "org": "ros2",
+      "url": "https://github.com/ros2/ros2.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "ahcorde",
+      ],
+      "name": "rviz",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rviz.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "clalancette",
+        "audrow",
+      ],
+      "name": "ros2_documentation",
+      "org": "ros2",
+      "url": "https://github.com/ros2/ros2_documentation.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "wjwwood",
+        "adityapande-1995",
+        "methylDragon",
+      ],
+      "name": "launch",
+      "org": "ros2",
+      "url": "https://github.com/ros2/launch.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "gbiggs",
+        "audrow",
+      ],
+      "name": "ros2cli",
+      "org": "ros2",
+      "url": "https://github.com/ros2/ros2cli.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "clalancette",
+        "ahcorde",
+      ],
+      "name": "geometry2",
+      "org": "ros2",
+      "url": "https://github.com/ros2/geometry2.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "sloretz",
+        "adityapande-1995",
+        "quarkytale",
+        "methylDragon",
+      ],
+      "name": "rosidl",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rosidl.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "ivanpauno",
+      ],
+      "name": "rmw_cyclonedds",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rmw_cyclonedds.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "mjeronimo",
+      ],
+      "name": "ament_lint",
+      "org": "ament",
+      "url": "https://github.com/ament/ament_lint.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "wjwwood",
+        "ivanpauno",
+        "audrow",
+      ],
+      "name": "rcl",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rcl.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "sloretz",
+        "gbiggs",
+      ],
+      "name": "rmw_fastrtps",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rmw_fastrtps.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "clalancette",
+        "cottsay",
+        "nuclearsandwich",
+      ],
+      "name": "ci",
+      "org": "ros2",
+      "url": "https://github.com/ros2/ci.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "audrow",
+      ],
+      "name": "docker_images",
+      "org": "osrf",
+      "url": "https://github.com/osrf/docker_images.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "adityapande-1995",
+        "methylDragon",
+      ],
+      "name": "launch_ros",
+      "org": "ros2",
+      "url": "https://github.com/ros2/launch_ros.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "cottsay",
+      ],
+      "name": "ros_buildfarm_config",
+      "org": "ros2",
+      "url": "https://github.com/ros2/ros_buildfarm_config.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "mjeronimo",
+        "adityapande-1995",
+        "audrow",
+      ],
+      "name": "demos",
+      "org": "ros2",
+      "url": "https://github.com/ros2/demos.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "quarkytale",
+        "methylDragon",
+      ],
+      "name": "image_common",
+      "org": "ros-perception",
+      "url": "https://github.com/ros-perception/image_common.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "gbiggs",
+        "quarkytale",
+        "methylDragon",
+      ],
+      "name": "ros1_bridge",
+      "org": "ros2",
+      "url": "https://github.com/ros2/ros1_bridge.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "mjeronimo",
+      ],
+      "name": "ament_cmake",
+      "org": "ament",
+      "url": "https://github.com/ament/ament_cmake.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "clalancette",
+        "audrow",
+      ],
+      "name": "rep",
+      "org": "ros-infrastructure",
+      "url": "https://github.com/ros-infrastructure/rep.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "wjwwood",
+        "clalancette",
+        "ahcorde",
+      ],
+      "name": "rcutils",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rcutils.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "tfoote",
+      ],
+      "name": "common_interfaces",
+      "org": "ros2",
+      "url": "https://github.com/ros2/common_interfaces.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "sloretz",
+        "quarkytale",
+      ],
+      "name": "rosidl_python",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rosidl_python.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "clalancette",
+      ],
+      "name": "robot_state_publisher",
+      "org": "ros",
+      "url": "https://github.com/ros/robot_state_publisher.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "wjwwood",
+        "ivanpauno",
+        "methylDragon",
+      ],
+      "name": "rmw",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rmw.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "quarkytale",
+      ],
+      "name": "rqt",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/rqt.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "ahcorde",
+        "adityapande-1995",
+      ],
+      "name": "examples",
+      "org": "ros2",
+      "url": "https://github.com/ros2/examples.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "gbiggs",
+      ],
+      "name": "message_filters",
+      "org": "ros2",
+      "url": "https://github.com/ros2/message_filters.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "methylDragon",
+      ],
+      "name": "system_tests",
+      "org": "ros2",
+      "url": "https://github.com/ros2/system_tests.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "mjeronimo",
+      ],
+      "name": "rqt_bag",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/rqt_bag.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "clalancette",
+      ],
+      "name": "urdfdom",
+      "org": "ros",
+      "url": "https://github.com/ros/urdfdom.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "clalancette",
+      ],
+      "name": "pluginlib",
+      "org": "ros",
+      "url": "https://github.com/ros/pluginlib.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "wjwwood",
+      ],
+      "name": "rqt_image_view",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/rqt_image_view.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "wjwwood",
+        "clalancette",
+      ],
+      "name": "design",
+      "org": "ros2",
+      "url": "https://github.com/ros2/design.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "gbiggs",
+      ],
+      "name": "rcl_interfaces",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rcl_interfaces.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "wjwwood",
+        "methylDragon",
+      ],
+      "name": "rcpputils",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rcpputils.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "cottsay",
+      ],
+      "name": "yaml_cpp_vendor",
+      "org": "ros2",
+      "url": "https://github.com/ros2/yaml_cpp_vendor.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "gbiggs",
+      ],
+      "name": "class_loader",
+      "org": "ros",
+      "url": "https://github.com/ros/class_loader.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "quarkytale",
+      ],
+      "name": "qt_gui_core",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/qt_gui_core.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "cottsay",
+      ],
+      "name": "orocos_kdl_vendor",
+      "org": "ros2",
+      "url": "https://github.com/ros2/orocos_kdl_vendor.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "wjwwood",
+      ],
+      "name": "rmw_implementation",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rmw_implementation.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "tfoote",
+        "audrow",
+      ],
+      "name": "rosdoc2",
+      "org": "ros-infrastructure",
+      "url": "https://github.com/ros-infrastructure/rosdoc2.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "clalancette",
+      ],
+      "name": "joint_state_publisher",
+      "org": "ros",
+      "url": "https://github.com/ros/joint_state_publisher.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "clalancette",
+      ],
+      "name": "kdl_parser",
+      "org": "ros",
+      "url": "https://github.com/ros/kdl_parser.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "ahcorde",
+      ],
+      "name": "ros_tutorials",
+      "org": "ros",
+      "url": "https://github.com/ros/ros_tutorials.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "mjeronimo",
+      ],
+      "name": "rqt_graph",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/rqt_graph.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "quarkytale",
+      ],
+      "name": "rqt_reconfigure",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/rqt_reconfigure.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "wjwwood",
+      ],
+      "name": "osrf_pycommon",
+      "org": "osrf",
+      "url": "https://github.com/osrf/osrf_pycommon.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "cottsay",
+      ],
+      "name": "buildfarm_perf_tests",
+      "org": "ros2",
+      "url": "https://github.com/ros2/buildfarm_perf_tests.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "cottsay",
+      ],
+      "name": "libyaml_vendor",
+      "org": "ros2",
+      "url": "https://github.com/ros2/libyaml_vendor.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "wjwwood",
+        "clalancette",
+      ],
+      "name": "rcl_logging",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rcl_logging.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "methylDragon",
+      ],
+      "name": "realtime_support",
+      "org": "ros2",
+      "url": "https://github.com/ros2/realtime_support.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "sloretz",
+        "quarkytale",
+      ],
+      "name": "rosidl_typesupport",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rosidl_typesupport.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "sloretz",
+      ],
+      "name": "rosidl_typesupport_fastrtps",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rosidl_typesupport_fastrtps.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "mjeronimo",
+      ],
+      "name": "rosindex",
+      "org": "ros-infrastructure",
+      "url": "https://github.com/ros-infrastructure/rosindex.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "gbiggs",
+      ],
+      "name": "angles",
+      "org": "ros",
+      "url": "https://github.com/ros/angles.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "gbiggs",
+      ],
+      "name": "bond_core",
+      "org": "ros",
+      "url": "https://github.com/ros/bond_core.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "ahcorde",
+      ],
+      "name": "geometry_tutorials",
+      "org": "ros",
+      "url": "https://github.com/ros/geometry_tutorials.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "gbiggs",
+      ],
+      "name": "resource_retriever",
+      "org": "ros",
+      "url": "https://github.com/ros/resource_retriever.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "quarkytale",
+      ],
+      "name": "interactive_markers",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/interactive_markers.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "sloretz",
+      ],
+      "name": "python_qt_binding",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/python_qt_binding.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "methylDragon",
+      ],
+      "name": "rqt_plot",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/rqt_plot.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "quarkytale",
+      ],
+      "name": "ament_index",
+      "org": "ament",
+      "url": "https://github.com/ament/ament_index.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "cottsay",
+      ],
+      "name": "performance_test",
+      "org": "ros2",
+      "url": "https://github.com/ros2/performance_test.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "ivanpauno",
+      ],
+      "name": "rmw_dds_common",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rmw_dds_common.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "clalancette",
+      ],
+      "name": "depthimage_to_laserscan",
+      "org": "ros-perception",
+      "url": "https://github.com/ros-perception/depthimage_to_laserscan.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "methylDragon",
+      ],
+      "name": "rqt_topic",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/rqt_topic.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "quarkytale",
+      ],
+      "name": "ament_package",
+      "org": "ament",
+      "url": "https://github.com/ament/ament_package.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "cottsay",
+      ],
+      "name": "uncrustify_vendor",
+      "org": "ament",
+      "url": "https://github.com/ament/uncrustify_vendor.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "gbiggs",
+      ],
+      "name": "osrf_testing_tools_cpp",
+      "org": "osrf",
+      "url": "https://github.com/osrf/osrf_testing_tools_cpp.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "methylDragon",
+      ],
+      "name": "orocos_kinematics_dynamics",
+      "org": "ros2",
+      "url": "https://github.com/ros2/orocos_kinematics_dynamics.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "cottsay",
+      ],
+      "name": "pybind11_vendor",
+      "org": "ros2",
+      "url": "https://github.com/ros2/pybind11_vendor.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "sloretz",
+      ],
+      "name": "python_cmake_module",
+      "org": "ros2",
+      "url": "https://github.com/ros2/python_cmake_module.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "sloretz",
+      ],
+      "name": "rosidl_runtime_py",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rosidl_runtime_py.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "quarkytale",
+      ],
+      "name": "test_interface_files",
+      "org": "ros2",
+      "url": "https://github.com/ros2/test_interface_files.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "clalancette",
+        "ahcorde",
+      ],
+      "name": "urdf",
+      "org": "ros2",
+      "url": "https://github.com/ros2/urdf.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "gbiggs",
+      ],
+      "name": "filters",
+      "org": "ros",
+      "url": "https://github.com/ros/filters.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "nuclearsandwich",
+      ],
+      "name": "ros_environment",
+      "org": "ros",
+      "url": "https://github.com/ros/ros_environment.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "clalancette",
+      ],
+      "name": "urdfdom_headers",
+      "org": "ros",
+      "url": "https://github.com/ros/urdfdom_headers.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "cottsay",
+      ],
+      "name": "googletest",
+      "org": "ament",
+      "url": "https://github.com/ament/googletest.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "cottsay",
+      ],
+      "name": "google_benchmark_vendor",
+      "org": "ament",
+      "url": "https://github.com/ament/google_benchmark_vendor.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "audrow",
+      ],
+      "name": "multiarch-docker-image-generation",
+      "org": "osrf",
+      "url": "https://github.com/osrf/multiarch-docker-image-generation.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "ahcorde",
+        "cottsay",
+      ],
+      "name": "ignition_cmake2_vendor",
+      "org": "ignition",
+      "url": "https://github.com/ignition/ignition_cmake2_vendor.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "ahcorde",
+        "cottsay",
+      ],
+      "name": "ignition_math6_vendor",
+      "org": "ignition",
+      "url": "https://github.com/ignition/ignition_math6_vendor.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "mjeronimo",
+      ],
+      "name": "navigation_msgs",
+      "org": "ros-planning",
+      "url": "https://github.com/ros-planning/navigation_msgs.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "mjeronimo",
+      ],
+      "name": "Mimick",
+      "org": "ros2",
+      "url": "https://github.com/ros2/Mimick.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "methylDragon",
+      ],
+      "name": "ament_cmake_ros",
+      "org": "ros2",
+      "url": "https://github.com/ros2/ament_cmake_ros.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "nuclearsandwich",
+      ],
+      "name": "choco-packages",
+      "org": "ros2",
+      "url": "https://github.com/ros2/choco-packages.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "cottsay",
+      ],
+      "name": "console_bridge_vendor",
+      "org": "ros2",
+      "url": "https://github.com/ros2/console_bridge_vendor.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "cottsay",
+      ],
+      "name": "eigen3_cmake_module",
+      "org": "ros2",
+      "url": "https://github.com/ros2/eigen3_cmake_module.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "gbiggs",
+      ],
+      "name": "example_interfaces",
+      "org": "ros2",
+      "url": "https://github.com/ros2/example_interfaces.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "cottsay",
+      ],
+      "name": "mimick_vendor",
+      "org": "ros2",
+      "url": "https://github.com/ros2/mimick_vendor.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "ahcorde",
+      ],
+      "name": "performance_test_fixture",
+      "org": "ros2",
+      "url": "https://github.com/ros2/performance_test_fixture.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "methylDragon",
+      ],
+      "name": "rmw_connext",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rmw_connext.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "quarkytale",
+      ],
+      "name": "ros2cli_common_extensions",
+      "org": "ros2",
+      "url": "https://github.com/ros2/ros2cli_common_extensions.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "quarkytale",
+      ],
+      "name": "ros_testing",
+      "org": "ros2",
+      "url": "https://github.com/ros2/ros_testing.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "mjeronimo",
+      ],
+      "name": "ros_workspace",
+      "org": "ros2",
+      "url": "https://github.com/ros2/ros_workspace.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "sloretz",
+      ],
+      "name": "rosidl_core",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rosidl_core.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "sloretz",
+      ],
+      "name": "rosidl_dds",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rosidl_dds.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "sloretz",
+      ],
+      "name": "rosidl_defaults",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rosidl_defaults.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "sloretz",
+      ],
+      "name": "rosidl_typesupport_connext",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rosidl_typesupport_connext.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "quarkytale",
+      ],
+      "name": "rpyutils",
+      "org": "ros2",
+      "url": "https://github.com/ros2/rpyutils.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "cottsay",
+        "quarkytale",
+      ],
+      "name": "spdlog_vendor",
+      "org": "ros2",
+      "url": "https://github.com/ros2/spdlog_vendor.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "clalancette",
+        "ahcorde",
+      ],
+      "name": "teleop_twist_joy",
+      "org": "ros2",
+      "url": "https://github.com/ros2/teleop_twist_joy.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "clalancette",
+        "ahcorde",
+      ],
+      "name": "teleop_twist_keyboard",
+      "org": "ros2",
+      "url": "https://github.com/ros2/teleop_twist_keyboard.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "cottsay",
+      ],
+      "name": "tinyxml2_vendor",
+      "org": "ros2",
+      "url": "https://github.com/ros2/tinyxml2_vendor.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "cottsay",
+      ],
+      "name": "tinyxml_vendor",
+      "org": "ros2",
+      "url": "https://github.com/ros2/tinyxml_vendor.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "methylDragon",
+      ],
+      "name": "tlsf",
+      "org": "ros2",
+      "url": "https://github.com/ros2/tlsf.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "gbiggs",
+      ],
+      "name": "unique_identifier_msgs",
+      "org": "ros2",
+      "url": "https://github.com/ros2/unique_identifier_msgs.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "gbiggs",
+      ],
+      "name": "variants",
+      "org": "ros2",
+      "url": "https://github.com/ros2/variants.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "tfoote",
+      ],
+      "name": "rosdoc_lite",
+      "org": "ros-infrastructure",
+      "url": "https://github.com/ros-infrastructure/rosdoc_lite.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "quarkytale",
+      ],
+      "name": "laser_geometry",
+      "org": "ros-perception",
+      "url": "https://github.com/ros-perception/laser_geometry.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "scpeters",
+      ],
+      "name": "console_bridge",
+      "org": "ros",
+      "url": "https://github.com/ros/console_bridge.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "clalancette",
+      ],
+      "name": "eigen_stl_containers",
+      "org": "ros",
+      "url": "https://github.com/ros/eigen_stl_containers.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "clalancette",
+      ],
+      "name": "urdf_parser_py",
+      "org": "ros",
+      "url": "https://github.com/ros/urdf_parser_py.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "gbiggs",
+      ],
+      "name": "rqt_action",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/rqt_action.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "gbiggs",
+      ],
+      "name": "rqt_common_plugins",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/rqt_common_plugins.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "quarkytale",
+      ],
+      "name": "rqt_console",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/rqt_console.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "methylDragon",
+      ],
+      "name": "rqt_msg",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/rqt_msg.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "mjeronimo",
+      ],
+      "name": "rqt_publisher",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/rqt_publisher.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "quarkytale",
+      ],
+      "name": "rqt_py_console",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/rqt_py_console.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "methylDragon",
+      ],
+      "name": "rqt_service_caller",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/rqt_service_caller.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "mjeronimo",
+      ],
+      "name": "rqt_shell",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/rqt_shell.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "gbiggs",
+      ],
+      "name": "rqt_srv",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/rqt_srv.git",
+    },
+    {
+      "maintainers": [
+        "Accounted For",
+        "cottsay",
+      ],
+      "name": "tango_icons_vendor",
+      "org": "ros-visualization",
+      "url": "https://github.com/ros-visualization/tango_icons_vendor.git",
+    },
+  ],
+}
+`;
+
+exports[`processMaintainersAssignmentSheet should return repos 2`] = `
+[
+  "Accounted For",
+  "wjwwood",
+  "ivanpauno",
+  "hidmic",
+  "sloretz",
+  "adityapande-1995",
+  "clalancette",
+  "codebot",
+  "ahcorde",
+  "audrow",
+  "methylDragon",
+  "gbiggs",
+  "quarkytale",
+  "mjeronimo",
+  "cottsay",
+  "nuclearsandwich",
+  "tfoote",
+  "scpeters",
+]
+`;

@@ -9,8 +9,8 @@ const OLD_MAINTAINERS_INFO_PATH = join(
 
 describe('getMaintainersInfo', () => {
   it('should parse maintainers info', () => {
-    const maintainers = getMaintainersInfo(OLD_MAINTAINERS_INFO_PATH)
-    expect(maintainers.maintainers).toMatchSnapshot()
+    const {maintainers} = getMaintainersInfo(OLD_MAINTAINERS_INFO_PATH)
+    expect(maintainers).toMatchSnapshot()
   })
 })
 

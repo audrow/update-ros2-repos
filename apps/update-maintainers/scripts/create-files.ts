@@ -1,4 +1,4 @@
-import { writeFileSync } from 'fs'
+import { mkdirSync,writeFileSync } from 'fs'
 import { dump as dumpYaml } from 'js-yaml'
 import { join } from 'path'
 import { migrateMaintainersInfo } from '../src/maintainers-info-helpers'
@@ -19,10 +19,15 @@ function writeYaml({
 
 async function main() {
 
-  const isCheckUrls = true
   const isWriteFiles = true
 
   const dataDir = join(__dirname, '..', 'data')
+  const outputDir = join(__dirname, '..', 'out')
+  const cacheDir = join(__dirname, '..', 'cache')
+  for (const dir of [outputDir, cacheDir]) {
+    mkdirSync(dir, {recursive: true})
+  }
+
   const oldMaintainersInfoPath = join(
     dataDir,
     '2021-09-19-maintainers-info.yaml',
@@ -33,9 +38,9 @@ async function main() {
   )
 
   const reposColumnLetter = 'a'
-  const maintainersStartColumnLetter = 'n'
+  const urlColumnLetter = 'b'
+  const maintainersStartColumnLetter = 'o'
   const headingRowNumber = 2
-  const githubUrlPrefix = 'https://github.com/'
 
   const {repos, maintainerIds: newMaintainerIds} =
     await processMaintainersAssignmentSheet({
@@ -43,8 +48,7 @@ async function main() {
       headingRowNumber,
       maintainersStartColumnLetter,
       reposColumnLetter,
-      githubUrlPrefix,
-      isCheckUrls,
+      urlColumnLetter,
     })
   const newMaintainers = migrateMaintainersInfo({
     oldMaintainersInfoPath,
@@ -54,14 +58,12 @@ async function main() {
   if (isWriteFiles) {
     const dateString = new Date().toISOString().split('T')[0]
     writeYaml({
-      data: {
-        repositories: repos,
-      },
-      path: join(dataDir, `${dateString}-maintainer-assignments.yaml`),
+      data: repos,
+      path: join(outputDir, `${dateString}-maintainer-assignments.yaml`),
     })
     writeYaml({
       data: newMaintainers,
-      path: join(dataDir, `${dateString}-maintainers-info.yaml`),
+      path: join(outputDir, `${dateString}-maintainers-info.yaml`),
     })
   }
 }
