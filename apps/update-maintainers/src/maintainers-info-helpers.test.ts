@@ -1,9 +1,14 @@
-import {getMaintainersInfo, migrateMaintainersInfo } from './maintainers-info-helpers'
+import {
+  getMaintainersInfo,
+  migrateMaintainersInfo,
+} from './maintainers-info-helpers'
 
 import {join} from 'path'
 
 const OLD_MAINTAINERS_INFO_PATH = join(
-  __dirname, '..', 'data',
+  __dirname,
+  '..',
+  'data',
   '2021-09-19-maintainers-info.yaml',
 )
 

@@ -1,16 +1,10 @@
-import { mkdirSync,writeFileSync } from 'fs'
-import { dump as dumpYaml } from 'js-yaml'
-import { join } from 'path'
-import { migrateMaintainersInfo } from '../src/maintainers-info-helpers'
-import { processMaintainersAssignmentSheet } from '../src/process-maintainers-assignment-sheet'
+import {mkdirSync, writeFileSync} from 'fs'
+import {dump as dumpYaml} from 'js-yaml'
+import {join} from 'path'
+import {migrateMaintainersInfo} from '../src/maintainers-info-helpers'
+import {processMaintainersAssignmentSheet} from '../src/process-maintainers-assignment-sheet'
 
-function writeYaml({
-  data: maintainers,
-  path,
-}: {
-  data: unknown,
-  path: string
-}) {
+function writeYaml({data: maintainers, path}: {data: unknown; path: string}) {
   const maintainersYaml = dumpYaml(maintainers, {
     indent: 2,
   })
@@ -18,7 +12,6 @@ function writeYaml({
 }
 
 async function main() {
-
   const isWriteFiles = true
 
   const dataDir = join(__dirname, '..', 'data')

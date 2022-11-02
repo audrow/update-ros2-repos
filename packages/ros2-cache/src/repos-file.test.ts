@@ -10,14 +10,14 @@ const PATH_TO_REPOS_FILE = join(
 const REPOS_FILE_TEXT = fs.readFileSync(PATH_TO_REPOS_FILE, 'utf8')
 
 test('split org and name from github url', () => {
-  [
+  ;[
     ['ros2', 'rclcpp'],
     ['ros2', 'rclpy'],
     ['ignition', 'ignition'],
     ['ignition-release', 'ignition_transport'],
     ['ignition-release', 'ignition_cmake2_vendor'],
   ].forEach(([org, name]) => {
-    [
+    ;[
       `https://github.com/${org}/${name}`,
       `https://github.com/${org}/${name}.git`,
     ].forEach((url) => {

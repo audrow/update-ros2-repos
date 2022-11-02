@@ -1,8 +1,8 @@
+import dotenv from 'dotenv'
 import 'dotenv/config'
 import {Octokit} from 'octokit'
-import * as z from 'zod'
-import dotenv from 'dotenv'
 import {join} from 'path'
+import * as z from 'zod'
 dotenv.config({path: join(__dirname, '..', '..', '..', '.env')})
 
 const githubAccessToken = z.string().min(2).parse(process.env.GITHUB_TOKEN)

@@ -1,19 +1,18 @@
-import { parse as csvParse } from 'csv-parse/sync'
-import { readFileSync } from 'fs'
+import {parse as csvParse} from 'csv-parse/sync'
+import {readFileSync} from 'fs'
 import * as z from 'zod'
 
-export const repoSchema = z
-  .object({
-    org: z.string(),
-    name: z.string(),
-    url: z.string().url().endsWith('.git'),
-    maintainers: z.array(z.string().min(1)).min(1),
-  })
+export const repoSchema = z.object({
+  org: z.string(),
+  name: z.string(),
+  url: z.string().url().endsWith('.git'),
+  maintainers: z.array(z.string().min(1)).min(1),
+})
 
 export type Repo = z.infer<typeof repoSchema>
 
 export const reposSchema = z.object({
-  repositories: z.array(repoSchema)
+  repositories: z.array(repoSchema),
 })
 
 export type Repos = z.infer<typeof reposSchema>

@@ -1,7 +1,5 @@
 import path from 'path'
-import {
-  processMaintainersAssignmentSheet,
-} from './process-maintainers-assignment-sheet'
+import {processMaintainersAssignmentSheet} from './process-maintainers-assignment-sheet'
 
 jest.setTimeout(10000)
 
