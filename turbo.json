@@ -21,7 +21,9 @@
     },
     "test": {
       "dependsOn": ["^build"],
-      "outputs": ["coverage/**"]
+      "outputs": ["coverage/**"],
+      "env": ["GITHUB_TOKEN"]
     }
-  }
+  },
+  "globalEnv": ["GITHUB_TOKEN"]
 }
