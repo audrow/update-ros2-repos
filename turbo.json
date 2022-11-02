@@ -16,6 +16,9 @@
     "format": {
       "cache": true
     },
+    "check-format": {
+      "cache": true
+    },
     "clean": {
       "cache": true
     },
