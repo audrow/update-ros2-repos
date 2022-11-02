@@ -9,23 +9,27 @@ const PATH_TO_REPOS_FILE = join(
 )
 const REPOS_FILE_TEXT = fs.readFileSync(PATH_TO_REPOS_FILE, 'utf8')
 
-test('split org and name from github url', () => {
-  ;[
-    ['ros2', 'rclcpp'],
-    ['ros2', 'rclpy'],
-    ['ignition', 'ignition'],
-    ['ignition-release', 'ignition_transport'],
-    ['ignition-release', 'ignition_cmake2_vendor'],
-  ].forEach(([org, name]) => {
-    ;[
+test.each([
+  ['ros2', 'rclcpp'],
+  ['ros2', 'rclpy'],
+  ['ignition', 'ignition'],
+  ['ignition-release', 'ignition_transport'],
+  ['ignition-release', 'ignition_cmake2_vendor'],
+])('split org and name from github url', (org: string, name: string) => {
+  {
+    const {org: believedOrg, name: believedName} = splitGithubUrl(
       `https://github.com/${org}/${name}`,
+    )
+    expect(believedOrg).toBe(org)
+    expect(believedName).toBe(name)
+  }
+  {
+    const {org: believedOrg, name: believedName} = splitGithubUrl(
       `https://github.com/${org}/${name}.git`,
-    ].forEach((url) => {
-      const {org: believedOrg, name: believedName} = splitGithubUrl(url)
-      expect(believedOrg).toBe(org)
-      expect(believedName).toBe(name)
-    })
-  })
+    )
+    expect(believedOrg).toBe(org)
+    expect(believedName).toBe(name)
+  }
 })
 
 test('repos file should be processed and returned to the same thing', () => {
