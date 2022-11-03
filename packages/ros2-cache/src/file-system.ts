@@ -85,3 +85,31 @@ export async function createAndCommitFile({
   await git.add(absoluteFilePath)
   await git.commit(commitMessage)
 }
+
+export function deleteFileAndCommit({
+  repoPath,
+  filePath,
+  commitMessage,
+}: {
+  repoPath: string
+  filePath: string
+  commitMessage: string
+}) {
+  const absoluteFilePath = resolve(filePath)
+  fs.rmSync(absoluteFilePath)
+
+  const git = simpleGit(repoPath)
+  git.add(absoluteFilePath)
+  git.commit(commitMessage)
+}
+
+export async function resetBranch({
+  repoPath,
+  version,
+}: {
+  repoPath: string
+  version: string
+}) {
+  const git = simpleGit(repoPath)
+  await git.reset(['--hard', version])
+}

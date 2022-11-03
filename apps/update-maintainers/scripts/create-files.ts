@@ -1,11 +1,11 @@
 import endent from 'endent'
-import { mkdirSync,writeFileSync } from 'fs'
+import {mkdirSync, writeFileSync} from 'fs'
 import glob from 'glob'
-import { dump as dumpYaml } from 'js-yaml'
-import { join } from 'path'
-import { cache,fileSystem } from 'ros2-cache'
-import { migrateMaintainersInfo } from '../src/maintainers-info-helpers'
-import { processMaintainersAssignmentSheet } from '../src/process-maintainers-assignment-sheet'
+import {dump as dumpYaml} from 'js-yaml'
+import {join} from 'path'
+import {cache, fileSystem} from 'ros2-cache'
+import {migrateMaintainersInfo} from '../src/maintainers-info-helpers'
+import {processMaintainersAssignmentSheet} from '../src/process-maintainers-assignment-sheet'
 
 function writeYaml({data, path}: {data: unknown; path: string}) {
   const outputYaml = dumpYaml(data, {
