@@ -5,11 +5,21 @@ import {join} from 'path'
 import * as z from 'zod'
 dotenv.config({path: join(__dirname, '..', '..', '..', '.env')})
 
-const githubAccessToken = z.string().min(2).parse(process.env.GITHUB_TOKEN)
-if (!githubAccessToken) {
-  throw new Error('GITHUB_TOKEN is not set')
-}
+const githubAccessToken = z
+  .string()
+  .min(2)
+  .parse(process.env.GITHUB_TOKEN, {path: ['GITHUB_TOKEN']})
 const octokit = new Octokit({auth: githubAccessToken})
+
+type CreatePrOptions = Parameters<typeof octokit.rest.pulls.create>
+export async function createPr(options: CreatePrOptions) {
+  return await octokit.rest.pulls.create(...options)
+}
+
+type ForkRepoOptions = Parameters<typeof octokit.rest.repos.createFork>
+export async function createFork(options: ForkRepoOptions) {
+  return await octokit.rest.repos.createFork(...options)
+}
 
 export async function getDefaultBranch({
   org,

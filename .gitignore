@@ -35,4 +35,5 @@ dist
 
 # this project
 output/
+cache/
 .env

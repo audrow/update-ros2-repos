@@ -19,10 +19,14 @@
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
     "eslint-config-custom": "*",
+    "ros2-cache": "*",
     "tsconfig": "*"
   },
   "dependencies": {
+    "@types/glob": "^8.0.0",
     "csv-parse": "^5.3.1",
+    "endent": "^2.1.0",
+    "glob": "^8.0.3",
     "js-yaml": "^4.1.0",
     "zod": "^3.19.1"
   }
