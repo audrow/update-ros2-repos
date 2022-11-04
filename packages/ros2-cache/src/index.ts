@@ -2,6 +2,7 @@ export * as cache from './cache'
 export * as distributionFile from './distribution-file'
 export * as fileSystem from './file-system'
 export * as github from './github'
+export {makePullRequest} from './github-cli'
 export * as reposFile from './repos-file'
 export type {DistributionFile, ReposFile}
 
