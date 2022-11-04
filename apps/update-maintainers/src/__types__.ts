@@ -4,7 +4,7 @@ import * as z from 'zod'
 
 export const personSchema = z.object({
   name: z.string(),
-  email: z.string().email(),
+  email: z.string().email().optional(),
 })
 
 export type Person = z.infer<typeof personSchema>

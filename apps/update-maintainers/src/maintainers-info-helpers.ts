@@ -2,23 +2,25 @@ import {readFileSync} from 'fs'
 import {load as loadYaml} from 'js-yaml'
 import * as z from 'zod'
 
-export const maintainersInfoSchema = z.object({
-  maintainers: z.array(
-    z.object({
-      id: z.string(),
-      name: z.string(),
-      email: z.string().email(),
-    }),
-  ),
+const Maintainer = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.string().email(),
 })
 
-export type MaintainersInfo = z.infer<typeof maintainersInfoSchema>
+export type Maintainer = z.infer<typeof Maintainer>
+
+export const MaintainerInfo = z.object({
+  maintainers: z.array(Maintainer),
+})
+
+export type MaintainersInfo = z.infer<typeof MaintainerInfo>
 
 const maintainersMap = new Map<string, MaintainersInfo>()
 export function getMaintainersInfo(path: string) {
   if (!maintainersMap.has(path)) {
     const maintainersYaml = loadYaml(readFileSync(path, 'utf8'))
-    const maintainers = maintainersInfoSchema.parse(maintainersYaml, {
+    const maintainers = MaintainerInfo.parse(maintainersYaml, {
       path: ['getMaintainers'],
     })
     maintainersMap.set(path, maintainers)

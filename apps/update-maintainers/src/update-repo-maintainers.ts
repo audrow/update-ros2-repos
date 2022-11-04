@@ -4,7 +4,7 @@ import glob from 'glob'
 import {join} from 'path'
 import {fileSystem} from 'ros2-cache'
 import * as z from 'zod'
-import {maintainersInfoSchema} from '../src/maintainers-info-helpers'
+import {MaintainerInfo} from '../src/maintainers-info-helpers'
 import * as packageXml from '../src/package-xml'
 import type {SetMaintainersOptions as SetSetupPyMaintainerOptions} from '../src/setup-py'
 import * as setupPy from '../src/setup-py'
@@ -18,7 +18,7 @@ export const updateRepoOptionsSchema = z
     repoName: z.string(),
   })
   .merge(setupPy.setMaintainersOptionsSchema)
-  .merge(maintainersInfoSchema)
+  .merge(MaintainerInfo)
 
 export type UpdateRepoOptions = z.infer<typeof updateRepoOptionsSchema>
 
@@ -132,7 +132,6 @@ async function updatePackageXmlMaintainers({
 }
 
 async function main() {
-
   const cache = (await import('ros2-cache')).cache
   const copy = (await import('recursive-copy')).default
 
