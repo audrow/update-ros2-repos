@@ -4,7 +4,7 @@ export async function main() {
   // clone repos
   // const maintainersInfoFileName = 'maintainers-info.yaml'
   // const dataDir = join(__dirname, '..', 'data')
-  // const reposToUpdate = 
+  // const reposToUpdate =
   const version = 'rolling'
   const reposFileUrl = `https://raw.githubusercontent.com/ros2/ros2/${version}/ros2.repos`
   const reposPath = join(cacheDir, `${version}.repos.yaml`)

@@ -1,4 +1,4 @@
-import {mkdirSync, writeFileSync} from 'fs'
+import {writeFileSync} from 'fs'
 import {dump as dumpYaml} from 'js-yaml'
 import {join} from 'path'
 import {migrateMaintainersInfo} from '../src/maintainers-info-helpers'
