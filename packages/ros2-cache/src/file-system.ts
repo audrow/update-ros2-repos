@@ -30,37 +30,20 @@ export async function pushRepo({
     throw e
   }
 }
-export async function createCommitAndPushFile({
+
+export async function createCommit({
   repoPath,
-  filePath,
-  fileContent,
   commitMessage,
-  isDryRun,
 }: {
   repoPath: string
-  filePath: string
-  fileContent: string
   commitMessage: string
-  isDryRun: boolean
 }) {
-  await createAndCommitFile({
-    repoPath,
-    filePath,
-    fileContent,
-    commitMessage,
-  })
-
-  const absoluteFilePath = resolve(filePath)
   const git = simpleGit(repoPath)
   try {
-    if (!isDryRun) {
-      await git.push()
-      return `Pushed new commit: ${commitMessage}`
-    } else {
-      return `Would push new commit: ${commitMessage}`
-    }
+    await git.add('.')
+    await git.commit(commitMessage, undefined, {'--signoff': null} )
   } catch (e) {
-    console.error(`Could not push the file: ${absoluteFilePath}`)
+    console.error(`Could not create commit: ${commitMessage}`)
     throw e
   }
 }
@@ -83,10 +66,11 @@ export async function createAndCommitFile({
 
   const git = simpleGit(repoPath)
   await git.add(absoluteFilePath)
-  await git.commit(commitMessage)
+
+  await createCommit({repoPath, commitMessage})
 }
 
-export function deleteFileAndCommit({
+export async function deleteFileAndCommit({
   repoPath,
   filePath,
   commitMessage,
@@ -99,8 +83,9 @@ export function deleteFileAndCommit({
   fs.rmSync(absoluteFilePath)
 
   const git = simpleGit(repoPath)
-  git.add(absoluteFilePath)
-  git.commit(commitMessage)
+  await git.add(absoluteFilePath)
+
+  await createCommit({repoPath, commitMessage})
 }
 
 export async function resetBranch({
@@ -112,4 +97,6 @@ export async function resetBranch({
 }) {
   const git = simpleGit(repoPath)
   await git.reset(['--hard', version])
+  await git.clean('f', ['-d'])
+  await git.stash()
 }
