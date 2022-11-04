@@ -6,10 +6,7 @@ import {
   PACKAGE_XML_NO_MAINTAINERS,
 } from './test-data/test-data'
 
-import {
-  getMaintainers,
-  setMaintainers,
-} from './package-xml'
+import {getMaintainers, setMaintainers} from './package-xml'
 
 test('get maintainers', () => {
   const maintainers = getMaintainers(PACKAGE_XML_MODIFIED)

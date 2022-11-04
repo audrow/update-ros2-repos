@@ -1,25 +1,25 @@
 import * as z from 'zod'
-import type { Person } from "./__types__";
-import { personSchema } from "./__types__";
+import type {Person} from './__types__'
+import {personSchema} from './__types__'
 
 export function getMaintainers(text: string) {
-  const nameMatches = text.match(/maintainer=["|'](.*)["|']/);
-  const emailMatches = text.match(/maintainer_email=["|'](.*)["|']/);
+  const nameMatches = text.match(/maintainer=["|'](.*)["|']/)
+  const emailMatches = text.match(/maintainer_email=["|'](.*)["|']/)
   if (!nameMatches || !emailMatches) {
-    return [];
+    return []
   }
-  const names = nameMatches[1].split(",").map((name) => name.trim());
-  const emails = emailMatches[1].split(",").map((email) => email.trim());
+  const names = nameMatches[1].split(',').map((name) => name.trim())
+  const emails = emailMatches[1].split(',').map((email) => email.trim())
   if (names.length !== emails.length) {
     throw new Error(
       `Number of maintainer names does not match number of emails`,
-    );
+    )
   }
-  const out: Person[] = [];
+  const out: Person[] = []
   for (let i = 0; i < names.length; i++) {
     out.push(personSchema.parse({name: names[i], email: emails[i]}))
   }
-  return out;
+  return out
 }
 
 export const setMaintainersOptionsSchema = z.object({
@@ -34,7 +34,7 @@ export function setMaintainers(
   options?: SetMaintainersOptions,
 ) {
   // Build replacement maintainer name string
-  options = setMaintainersOptionsSchema.parse(options || {});
+  options = setMaintainersOptionsSchema.parse(options || {})
   const maintainerNameRegex = /( *)maintainer=(?:.*),\n/
   const nameMatch = text.match(maintainerNameRegex)
   if (!nameMatch) {
@@ -44,7 +44,10 @@ export function setMaintainers(
   let replaceNameString =
     `${nameIndent}maintainer='${maintainers.map((m) => m.name).join(', ')}` +
     "',"
-  replaceNameString = addNoqaE501IfTooLong(replaceNameString, options.maxLineLength)
+  replaceNameString = addNoqaE501IfTooLong(
+    replaceNameString,
+    options.maxLineLength,
+  )
   replaceNameString += '\n'
 
   // Build replacement maintainer email string
@@ -58,7 +61,10 @@ export function setMaintainers(
     `${emailIndent}maintainer_email='${maintainers
       .map((m) => m.email)
       .join(', ')}` + "',"
-  replaceEmailString = addNoqaE501IfTooLong(replaceEmailString, options.maxLineLength)
+  replaceEmailString = addNoqaE501IfTooLong(
+    replaceEmailString,
+    options.maxLineLength,
+  )
   replaceEmailString += '\n'
 
   // Replace maintainer
@@ -69,7 +75,7 @@ export function setMaintainers(
 
 function addNoqaE501IfTooLong(text: string, maxLength: number) {
   if (text.length > maxLength) {
-    return text + "  # noqa: E501";
+    return text + '  # noqa: E501'
   }
-  return text;
+  return text
 }

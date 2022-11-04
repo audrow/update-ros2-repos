@@ -41,7 +41,7 @@ export async function createCommit({
   const git = simpleGit(repoPath)
   try {
     await git.add('.')
-    await git.commit(commitMessage, undefined, {'--signoff': null} )
+    await git.commit(commitMessage, undefined, {'--signoff': null})
   } catch (e) {
     console.error(`Could not create commit: ${commitMessage}`)
     throw e

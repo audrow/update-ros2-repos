@@ -1,12 +1,9 @@
-import { personSchema } from "./__types__"
-import type { Person } from "./__types__"
+import type {Person} from './__types__'
+import {personSchema} from './__types__'
 
 // UTILS
 
-export function comparePeopleByName(
-  a: Person,
-  b: Person,
-) {
+export function comparePeopleByName(a: Person, b: Person) {
   if (a.name < b.name) {
     return -1
   } else if (a.name > b.name) {
@@ -15,10 +12,7 @@ export function comparePeopleByName(
   return 0
 }
 
-export function isPersonInList(
-  person: Person,
-  people: Person[],
-) {
+export function isPersonInList(person: Person, people: Person[]) {
   for (const p of people) {
     if (isSamePerson(person, p)) {
       return true

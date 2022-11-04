@@ -1,28 +1,28 @@
-import { Maintainer } from "../maintainers-info-helpers";
-import { Person } from "../__types__";
+import {Maintainer} from '../maintainers-info-helpers'
+import {Person} from '../__types__'
 
 export const MAINTAINERS: Maintainer[] = [
   {
-    id: "foo",
-    name: "Foo Bar",
-    email: "foo@fake.org",
+    id: 'foo',
+    name: 'Foo Bar',
+    email: 'foo@fake.org',
   },
   {
-    id: "bar",
-    name: "Bar Baz",
-    email: "bar@fake.org",
+    id: 'bar',
+    name: 'Bar Baz',
+    email: 'bar@fake.org',
   },
   {
-    id: "baz",
-    name: "Baz Foo",
-    email: "baz@fake.org",
+    id: 'baz',
+    name: 'Baz Foo',
+    email: 'baz@fake.org',
   },
-];
+]
 
 export const MAINTAINERS_READ: Person[] = MAINTAINERS.map((m) => ({
   name: m.name,
   email: m.email,
-}));
+}))
 
 export const PACKAGE_XML = `<?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
@@ -55,7 +55,7 @@ export const PACKAGE_XML = `<?xml version="1.0"?>
   <export>
     <build_type>ament_python</build_type>
   </export>
-</package>`;
+</package>`
 
 export const PACKAGE_XML_MODIFIED = `<?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
@@ -89,7 +89,7 @@ export const PACKAGE_XML_MODIFIED = `<?xml version="1.0"?>
   <export>
     <build_type>ament_python</build_type>
   </export>
-</package>`;
+</package>`
 
 export const PACKAGE_XML_NO_MAINTAINERS = `<?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
@@ -116,7 +116,7 @@ export const PACKAGE_XML_NO_MAINTAINERS = `<?xml version="1.0"?>
   <export>
     <build_type>ament_python</build_type>
   </export>
-</package>`;
+</package>`
 
 export const SETUP_PY = `from setuptools import find_packages
 from setuptools import setup
@@ -157,7 +157,7 @@ The package provides the run command for the ROS 2 command line tools.""",
             'run = ros2run.command.run:RunCommand',
         ],
     }
-)`;
+)`
 
 export const SETUP_PY_MODIFIED = `from setuptools import find_packages
 from setuptools import setup
@@ -198,7 +198,7 @@ The package provides the run command for the ROS 2 command line tools.""",
             'run = ros2run.command.run:RunCommand',
         ],
     }
-)`;
+)`
 
 export const SETUP_PY_NO_MAINTAINERS = `from setuptools import find_packages
 from setuptools import setup
@@ -237,4 +237,4 @@ The package provides the run command for the ROS 2 command line tools.""",
             'run = ros2run.command.run:RunCommand',
         ],
     }
-)`;
+)`

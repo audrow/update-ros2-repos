@@ -6,10 +6,7 @@ import {
   SETUP_PY_NO_MAINTAINERS,
 } from './test-data/test-data'
 
-import {
-  getMaintainers,
-  setMaintainers,
-} from './setup-py'
+import {getMaintainers, setMaintainers} from './setup-py'
 
 test('get maintainers', () => {
   const maintainers = getMaintainers(SETUP_PY_MODIFIED)
