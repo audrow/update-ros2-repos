@@ -79,13 +79,13 @@ export async function main() {
 
       const title = `[${version.toUpperCase()}] Update maintainers`
       const body = endent`
-      This PR updates the maintainers and code owners. The new maintainers are:
-      ${newMaintainers
-        .map((maintainer) => `* ${maintainer.name} (@${maintainer.id})`)
-        .join('\n')}
+        This PR updates the maintainers and code owners. The new maintainers are:
+        ${newMaintainers
+          .map((maintainer) => `* ${maintainer.name} (@${maintainer.id})`)
+          .join('\n')}
 
-      This PR was made with ${generatedByRepoUrl}.
-    `
+        This PR was made with ${generatedByRepoUrl}.
+      `
 
       const alreadyOpen = await github.isPrAlreadyOpen({
         name: repo.name,
