@@ -1,21 +1,25 @@
+import endent from 'endent'
 import {readFileSync} from 'fs'
 import yaml from 'js-yaml'
 import {join} from 'path'
-import {cache, makePullRequest} from 'ros2-cache'
+import {cache, fileSystem, github, makePullRequest} from 'ros2-cache'
 import * as z from 'zod'
 import {Maintainer, MaintainersInfo} from './maintainers-info-helpers'
 import {ReposAssignments} from './process-maintainers-assignment-sheet'
 import {updateRepoMaintainers} from './update-repo-maintainers'
 
 export async function main() {
+  // config
   const version = 'rolling'
   const maxSetupPyLineLength = 99
   const newBranchName = 'audrow/update-maintainers'
-  const isDryRun = true
+  const isDryRun = false
   const isVerbose = true
-  const isForceRefresh = false
+  const isForceRefresh = true
+  const isAddReviewers = true
+  const generatedByRepoUrl = 'https://github.com/audrow/update-ros2-repos'
 
-  // clone repos
+  // Setup
   const dataDir = join(__dirname, '..', 'data')
   const reposAssignmentsPath = join(
     dataDir,
@@ -39,6 +43,8 @@ export async function main() {
   const cacheDir = join(__dirname, '..', 'cache', version)
   cache.makeCacheDir({path: cacheDir, isForceRefresh})
 
+  // run it!
+  const errors: {repoName: string; error: unknown}[] = []
   for await (const repo of repositories) {
     const repoPath = join(cacheDir, repo.org, repo.name)
     await cache.pullGitRepo({
@@ -60,22 +66,59 @@ export async function main() {
       repoName: repo.name,
       newBranchName,
       baseBranchName: version,
+      generatedByRepoUrl,
     })
 
-    await makePullRequest({
-      repoPath,
-      title: `[${version.toUpperCase()}] Update maintainers`,
-      body: `This PR updates the maintainers for ${repo.name} to the following people:`,
-      repoName: repo.name,
-      baseBranchName: version,
-      isDryRun,
-      isVerbose,
-    })
+    try {
+      await fileSystem.pushRepo({
+        repoPath,
+        branch: newBranchName,
+        remote: 'origin',
+        isDryRun,
+      })
 
-    break
+      const title = `[${version.toUpperCase()}] Update maintainers`
+      const body = endent`
+      This PR updates the maintainers and code owners. The new maintainers are:
+      ${newMaintainers
+        .map((maintainer) => `* ${maintainer.name} (@${maintainer.id})`)
+        .join('\n')}
+
+      This PR was made with ${generatedByRepoUrl}.
+    `
+
+      const alreadyOpen = await github.isPrAlreadyOpen({
+        name: repo.name,
+        org: repo.org,
+        targetBranch: version,
+        title,
+      })
+      if (!alreadyOpen) {
+        await makePullRequest({
+          repoPath,
+          title,
+          body,
+          repo: `${repo.org}/${repo.name}`,
+          baseBranchName: version,
+          reviewerIds: isAddReviewers ? repo.maintainers : [],
+          isDryRun,
+          isVerbose,
+        })
+      } else {
+        console.log(`PR already open for ${repo.name}`)
+      }
+    } catch (e) {
+      console.error(e)
+      errors.push({repoName: repo.name, error: e})
+    }
   }
-  // update maintainers
-  // open PRs for repos
+  if (errors.length > 0) {
+    console.error('Finished with errors:')
+    for (const {error, repoName} of errors) {
+      console.error(` - ${repoName}: ${JSON.stringify(error, null, 2)}`)
+    }
+    process.exit(1)
+  }
 }
 
 if (require.main === module) {

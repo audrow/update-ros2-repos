@@ -27,17 +27,21 @@ export async function createNewBranch({
 
 export async function pushRepo({
   repoPath,
+  remote,
+  branch,
   isDryRun,
 }: {
   repoPath: string
+  remote: string
+  branch: string
   isDryRun: boolean
 }) {
   const git = simpleGit(repoPath)
   try {
     if (!isDryRun) {
-      await git.push()
+      await git.push(remote, branch, {'--force': null})
     } else {
-      return `Would push the repo: ${repoPath}`
+      console.log(`Would push the repo: ${repoPath} to ${remote} ${branch}`)
     }
   } catch (e) {
     console.error(`Could not push the repo at: ${repoPath}`)

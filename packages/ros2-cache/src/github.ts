@@ -11,15 +11,9 @@ const githubAccessToken = z
   .parse(process.env.GITHUB_TOKEN, {path: ['GITHUB_TOKEN']})
 const octokit = new Octokit({auth: githubAccessToken})
 
-type CreatePrOptions = Parameters<typeof octokit.rest.pulls.create>
-export async function createPr(options: CreatePrOptions) {
-  return await octokit.rest.pulls.create(...options)
-}
+export const rest = octokit.rest
 
-type ForkRepoOptions = Parameters<typeof octokit.rest.repos.createFork>
-export async function createFork(options: ForkRepoOptions) {
-  return await octokit.rest.repos.createFork(...options)
-}
+export const createPr = octokit.rest.pulls.create
 
 export async function getDefaultBranch({
   org,
@@ -138,6 +132,32 @@ async function changePrTargetsToBranch({
       base: branch,
     })
   }
+}
+
+export async function isPrAlreadyOpen({
+  org,
+  name,
+  title,
+  targetBranch,
+}: {
+  org: string
+  name: string
+  title: string
+  targetBranch: string
+}) {
+  const {data} = await octokit.rest.pulls.list({
+    owner: org,
+    repo: name,
+    state: 'open',
+    base: targetBranch,
+  })
+  const matchingPrsCount = data.filter((pr) => pr.title === title).length
+  if (matchingPrsCount > 1) {
+    throw new Error(
+      `Found ${matchingPrsCount} open PRs with the same title and target branch. This should not happen.`,
+    )
+  }
+  return matchingPrsCount === 1
 }
 
 async function main() {

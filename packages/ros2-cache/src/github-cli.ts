@@ -3,7 +3,7 @@ import * as z from 'zod'
 
 const MakePullRequestProps = z.object({
   repoPath: z.string(),
-  repoName: z.string(),
+  repo: z.string(),
   baseBranchName: z.string(),
   title: z.string(),
   body: z.string(),
@@ -17,7 +17,7 @@ type MakePullRequestProps = z.infer<typeof MakePullRequestProps>
 export async function makePullRequest(props: MakePullRequestProps) {
   const {
     repoPath,
-    repoName,
+    repo,
     baseBranchName,
     reviewerIds,
     title,
@@ -33,11 +33,11 @@ export async function makePullRequest(props: MakePullRequestProps) {
     '--base',
     baseBranchName,
     '--repo',
-    repoName,
+    repo,
     '--title',
-    title,
+    `"${title}"`,
     '--body',
-    body,
+    `"${body}"`,
   ]
   if (reviewerIds && reviewerIds.length > 0) {
     args.push('--reviewer', reviewerIds.join(','))
@@ -81,7 +81,7 @@ async function runCommand(props: RunCommandProps) {
 async function main() {
   await makePullRequest({
     repoPath: 'path/to/repo',
-    repoName: 'ros2cli',
+    repo: 'ros2cli',
     baseBranchName: 'rolling',
     title: 'Test PR',
     body: 'This is a test PR',
