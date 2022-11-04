@@ -11,6 +11,20 @@ export async function getBranch({
   return (await git.branch()).current
 }
 
+export async function createNewBranch({
+  repoPath,
+  baseBranchName,
+  newBranchName,
+}: {
+  repoPath: string
+  baseBranchName: string
+  newBranchName: string
+}) {
+  const git = simpleGit(repoPath)
+  await git.checkout(baseBranchName)
+  await git.checkoutLocalBranch(newBranchName)
+}
+
 export async function pushRepo({
   repoPath,
   isDryRun,

@@ -10,6 +10,7 @@ import {updateRepoMaintainers} from './update-repo-maintainers'
 export async function main() {
   const version = 'rolling'
   const maxSetupPyLineLength = 99
+  const newBranchName = 'audrow/update-maintainers'
 
   // clone repos
   // const maintainersInfoFileName = 'maintainers-info.yaml'
@@ -55,6 +56,8 @@ export async function main() {
       maxLineLength: maxSetupPyLineLength,
       maintainers: newMaintainers,
       repoName: repo.name,
+      newBranchName,
+      baseBranchName: version,
     })
     break
   }

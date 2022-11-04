@@ -16,6 +16,8 @@ export const updateRepoOptionsSchema = z
   .object({
     repoPath: z.string(),
     repoName: z.string(),
+    newBranchName: z.string(),
+    baseBranchName: z.string(),
   })
   .merge(setupPy.setMaintainersOptionsSchema)
   .merge(MaintainersInfo)
@@ -23,8 +25,10 @@ export const updateRepoOptionsSchema = z
 export type UpdateRepoOptions = z.infer<typeof updateRepoOptionsSchema>
 
 export async function updateRepoMaintainers(options: UpdateRepoOptions) {
-  const {repoPath, repoName, maintainers} =
+  const {repoPath, repoName, maintainers, newBranchName, baseBranchName} =
     updateRepoOptionsSchema.parse(options)
+
+  await fileSystem.createNewBranch({repoPath, newBranchName, baseBranchName})
 
   let isAddCodeOwners = true
   try {
@@ -178,6 +182,8 @@ async function main() {
     repoName,
     maintainers: newMaintainers,
     maxLineLength,
+    baseBranchName: version,
+    newBranchName: 'update-maintainers',
   })
 }
 
