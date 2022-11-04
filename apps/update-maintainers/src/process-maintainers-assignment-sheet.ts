@@ -2,20 +2,20 @@ import {parse as csvParse} from 'csv-parse/sync'
 import {readFileSync} from 'fs'
 import * as z from 'zod'
 
-export const repoSchema = z.object({
+export const RepoAssignments = z.object({
   org: z.string(),
   name: z.string(),
   url: z.string().url().endsWith('.git'),
   maintainers: z.array(z.string().min(1)).min(1),
 })
 
-export type Repo = z.infer<typeof repoSchema>
+export type RepoAssignments = z.infer<typeof RepoAssignments>
 
-export const reposSchema = z.object({
-  repositories: z.array(repoSchema),
+export const ReposAssignments = z.object({
+  repositories: z.array(RepoAssignments),
 })
 
-export type Repos = z.infer<typeof reposSchema>
+export type ReposAssignments = z.infer<typeof ReposAssignments>
 
 export async function processMaintainersAssignmentSheet({
   path: path,
@@ -62,7 +62,7 @@ export async function processMaintainersAssignmentSheet({
       )
 
       const [org, name] = repoString.split('/')
-      return repoSchema.parse({
+      return RepoAssignments.parse({
         name,
         org,
         url,
@@ -81,7 +81,7 @@ export async function processMaintainersAssignmentSheet({
 
   return {
     maintainerIds,
-    repos: reposSchema.parse({repositories: repos}),
+    repos: ReposAssignments.parse({repositories: repos}),
   }
 }
 
