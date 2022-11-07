@@ -32,6 +32,7 @@ export async function updateRepoMaintainers(options: UpdateRepoOptions) {
     baseBranchName,
     generatedByRepoUrl,
   } = updateRepoOptionsSchema.parse(options)
+  maintainers.sort((a, b) => a.name.localeCompare(b.name))
 
   await fileSystem.createNewBranch({repoPath, newBranchName, baseBranchName})
 

@@ -96,16 +96,18 @@ async function getPrNumbersTargetingABranch({
   org,
   name,
   branch,
+  state,
 }: {
   org: string
   name: string
   branch: string
+  state?: 'open' | 'closed' | 'all'
 }) {
   const prs = (
     await octokit.rest.pulls.list({
       owner: org,
       repo: name,
-      state: 'open',
+      state,
       base: branch,
     })
   ).data.map((pr) => pr.number)
