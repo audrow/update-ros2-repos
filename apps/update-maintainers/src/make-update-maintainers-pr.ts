@@ -5,9 +5,9 @@ import * as z from 'zod'
 import {Maintainer} from './maintainers-info-helpers'
 import {RepoAssignments} from './process-maintainers-assignment-sheet'
 
-import {updateRepoMaintainers} from './update-repo-maintainers'
+import {updateRepositoryMaintainers} from './update-repository-maintainers'
 
-export const UpdateRepositoryMaintainerProps = z.object({
+export const MakeUpdateMaintainersPrProps = z.object({
   additionalReviewers: z.array(z.string()),
   cacheDir: z.string(),
   isAddMaintainersAsReviewers: z.boolean(),
@@ -18,17 +18,17 @@ export const UpdateRepositoryMaintainerProps = z.object({
   newBranchName: z.string(),
   projectUrl: z.string(),
   repo: RepoAssignments,
-  reposToIgnore: z.array(z.string()),
+  reposToIgnore: z.array(z.string()).optional(),
   titleUniqueIdentifier: z.string(),
   version: z.string(),
 })
 
-export type UpdateRepositoryMaintainersProps = z.infer<
-  typeof UpdateRepositoryMaintainerProps
+export type MakeUpdateMaintainersPrProps = z.infer<
+  typeof MakeUpdateMaintainersPrProps
 >
 
-export async function updateRepositoryMaintainers(
-  props: UpdateRepositoryMaintainersProps,
+export async function makeUpdateMaintainersPr(
+  props: MakeUpdateMaintainersPrProps,
 ) {
   const {
     additionalReviewers,
@@ -44,8 +44,8 @@ export async function updateRepositoryMaintainers(
     reposToIgnore,
     titleUniqueIdentifier,
     version,
-  } = UpdateRepositoryMaintainerProps.parse(props)
-  if (reposToIgnore.includes(`${repo.org}/${repo.name}`)) {
+  } = MakeUpdateMaintainersPrProps.parse(props)
+  if ((reposToIgnore ?? []).includes(`${repo.org}/${repo.name}`)) {
     return
   }
 
@@ -60,8 +60,9 @@ export async function updateRepositoryMaintainers(
       return maintainers.find((maintainer) => maintainer.id === maintainerId)
     }),
   )
+  newMaintainers.sort((a, b) => a.name.localeCompare(b.name))
 
-  await updateRepoMaintainers({
+  await updateRepositoryMaintainers({
     repoPath,
     maxLineLength: maxSetupPyLineLength,
     maintainers: newMaintainers,

@@ -4,11 +4,11 @@ import glob from 'glob'
 import {join} from 'path'
 import {fileSystem} from 'ros2-cache'
 import * as z from 'zod'
-import {MaintainersInfo} from '../src/maintainers-info-helpers'
-import * as packageXml from '../src/package-xml'
-import type {SetMaintainersOptions as SetSetupPyMaintainerOptions} from '../src/setup-py'
-import * as setupPy from '../src/setup-py'
-import type {Person} from '../src/__types__'
+import {MaintainersInfo} from './maintainers-info-helpers'
+import * as packageXml from './package-xml'
+import type {SetMaintainersOptions as SetSetupPyMaintainerOptions} from './setup-py'
+import * as setupPy from './setup-py'
+import type {Person} from './__types__'
 
 export const updateRepoOptionsSchema = z
   .object({
@@ -23,7 +23,7 @@ export const updateRepoOptionsSchema = z
 
 export type UpdateRepoOptions = z.infer<typeof updateRepoOptionsSchema>
 
-export async function updateRepoMaintainers(options: UpdateRepoOptions) {
+export async function updateRepositoryMaintainers(options: UpdateRepoOptions) {
   const {
     repoPath,
     repoName,
@@ -32,7 +32,6 @@ export async function updateRepoMaintainers(options: UpdateRepoOptions) {
     baseBranchName,
     generatedByRepoUrl,
   } = updateRepoOptionsSchema.parse(options)
-  maintainers.sort((a, b) => a.name.localeCompare(b.name))
 
   await fileSystem.createNewBranch({repoPath, newBranchName, baseBranchName})
 
@@ -189,7 +188,7 @@ async function main() {
   await copy(cacheDir, outputDir, {dot: true})
 
   // await fileSystem.resetBranch({repoPath, version: `origin/${version}`})
-  await updateRepoMaintainers({
+  await updateRepositoryMaintainers({
     repoPath,
     repoName,
     maintainers: newMaintainers,
