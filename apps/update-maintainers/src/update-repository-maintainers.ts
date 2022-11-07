@@ -59,7 +59,7 @@ export async function updateRepositoryMaintainers(options: UpdateRepoOptions) {
 
   let isUpdateMaintainers = true
   try {
-    console.log(`Updating Maintainers files to ${repoName}`)
+    console.log(`Updating Maintainers files in ${repoName}`)
     await updatePackageXmlMaintainers({repoPath, maintainers})
     await updateSetupPyMaintainers({repoPath, maintainers, options})
     await fileSystem.createCommit({
