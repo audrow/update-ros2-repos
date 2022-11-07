@@ -2,7 +2,12 @@ import {readFileSync} from 'fs'
 import yaml from 'js-yaml'
 import {join} from 'path'
 import {cache} from 'ros2-cache'
-import {MaintainersInfo, ReposAssignments, makeUpdateMaintainersPr, GENERATED_BY_REPO_URL} from '../src/index'
+import {
+  GENERATED_BY_REPO_URL,
+  MaintainersInfo,
+  makeUpdateMaintainersPr,
+  ReposAssignments,
+} from '../src/index'
 
 export async function main() {
   // config
