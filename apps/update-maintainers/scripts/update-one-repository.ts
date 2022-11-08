@@ -11,12 +11,11 @@ import {
 
 export async function main() {
   // config
-  const repoOrgAndName = 'ros2/rclcpp'
+  const repoOrgAndName = 'ros2/demos'
   const version = 'rolling'
   const maxSetupPyLineLength = 99
   const newBranchName = 'audrow/update-maintainers'
-  const isDryRun = true
-  const isVerbose = true
+  const isDryRun = false
   const isForceRefresh = true
 
   const isAddMaintainersAsReviewers = true
@@ -57,7 +56,6 @@ export async function main() {
     cacheDir,
     isAddMaintainersAsReviewers,
     isDryRun,
-    isVerbose,
     maintainers,
     maxSetupPyLineLength,
     newBranchName,

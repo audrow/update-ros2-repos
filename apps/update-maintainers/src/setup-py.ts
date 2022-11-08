@@ -35,7 +35,7 @@ export function setMaintainers(
 ) {
   // Build replacement maintainer name string
   options = setMaintainersOptionsSchema.parse(options || {})
-  const maintainerNameRegex = /( *)maintainer=(?:.*),\n/
+  const maintainerNameRegex = /( *)maintainer=(?:.*), *(?:# noqa: E501)?\n/
   const nameMatch = text.match(maintainerNameRegex)
   if (!nameMatch) {
     throw new Error(`Could not find maintainer in setup.py`)
@@ -51,7 +51,8 @@ export function setMaintainers(
   replaceNameString += '\n'
 
   // Build replacement maintainer email string
-  const maintainerEmailRegex = /( *)maintainer_email=(?:.*),\n/
+  const maintainerEmailRegex =
+    /( *)maintainer_email=(?:.*), *(?:# noqa: E501)?\n/
   const emailMatch = text.match(maintainerEmailRegex)
   if (!emailMatch) {
     throw new Error(`Could not find maintainer email in setup.py`)

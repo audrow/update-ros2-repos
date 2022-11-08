@@ -14,13 +14,17 @@ export async function main() {
   const version = 'rolling'
   const maxSetupPyLineLength = 99
   const newBranchName = 'audrow/update-maintainers'
-  const isDryRun = true
-  const isVerbose = true
+  const isDryRun = false
   const isForceRefresh = true
   const reposToIgnore = [
     'ros2/ros2_documentation',
     'ros2/rclpy', // do Humble
-    // 'ros2/rclcpp', // do Humble
+    'ros2/rclcpp', // do Humble
+    'ros2/ros2', // do Humble
+    'ros2/ci', // clone didn't work
+    'osrf/docker_images', // clone didn't work
+    'ros-infrastructure/rep', // clone didn't work
+    'osrf/',
   ]
 
   const isAddMaintainersAsReviewers = true
@@ -60,7 +64,6 @@ export async function main() {
         cacheDir,
         isAddMaintainersAsReviewers,
         isDryRun,
-        isVerbose,
         maintainers,
         maxSetupPyLineLength,
         newBranchName,

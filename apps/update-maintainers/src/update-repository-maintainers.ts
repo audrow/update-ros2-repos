@@ -38,6 +38,8 @@ export async function updateRepositoryMaintainers(options: UpdateRepoOptions) {
   let isAddCodeOwners = true
   try {
     console.log(`Adding CODEOWNERS file to ${repoName}`)
+    const ids = maintainers.map((m) => m.id)
+    ids.sort()
     createCodeOwnersFile({
       repoPath,
       codeOwnersGithubIds: maintainers.map((m) => m.id),
@@ -47,7 +49,7 @@ export async function updateRepositoryMaintainers(options: UpdateRepoOptions) {
       repoPath,
       commitMessage: `Add ${andList(
         maintainers.map((m) => m.name),
-      )} as code owners`,
+      )} to CODEOWNERs file`,
     })
   } catch (error) {
     console.error(
@@ -69,10 +71,17 @@ export async function updateRepositoryMaintainers(options: UpdateRepoOptions) {
       )}`,
     })
   } catch (error) {
-    console.error(
-      `Failed to update maintainers files in ${repoName}:`,
-      JSON.stringify(error, null, 2),
-    )
+    if (error instanceof Error) {
+      console.error(
+        `Failed to update maintainers files in ${repoName}:`,
+        error.message,
+      )
+    } else {
+      console.error(
+        `Failed to update maintainers files in ${repoName}:`,
+        JSON.stringify(error, null, 2),
+      )
+    }
     isUpdateMaintainers = false
   }
   return {
@@ -82,6 +91,13 @@ export async function updateRepositoryMaintainers(options: UpdateRepoOptions) {
 }
 
 function andList(items: string[]) {
+  if (items.length < 1) {
+    throw new Error('Must have at least one item')
+  } else if (items.length === 1) {
+    return items[0]
+  } else if (items.length === 2) {
+    return `${items[0]} and ${items[1]}`
+  }
   const lastItem = items.pop()
   return `${items.join(', ')}, and ${lastItem}`
 }

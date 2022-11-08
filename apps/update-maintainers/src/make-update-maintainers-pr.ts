@@ -1,6 +1,6 @@
 import endent from 'endent'
 import {join} from 'path'
-import {cache, fileSystem, github, makePullRequest} from 'ros2-cache'
+import {cache, fileSystem, github} from 'ros2-cache'
 import * as z from 'zod'
 import {Maintainer} from './maintainers-info-helpers'
 import {RepoAssignments} from './process-maintainers-assignment-sheet'
@@ -12,7 +12,6 @@ export const MakeUpdateMaintainersPrProps = z.object({
   cacheDir: z.string(),
   isAddMaintainersAsReviewers: z.boolean(),
   isDryRun: z.boolean(),
-  isVerbose: z.boolean(),
   maintainers: Maintainer.array(),
   maxSetupPyLineLength: z.number(),
   newBranchName: z.string(),
@@ -27,6 +26,7 @@ export type MakeUpdateMaintainersPrProps = z.infer<
   typeof MakeUpdateMaintainersPrProps
 >
 
+let githubUserName: string | undefined
 export async function makeUpdateMaintainersPr(
   props: MakeUpdateMaintainersPrProps,
 ) {
@@ -35,7 +35,6 @@ export async function makeUpdateMaintainersPr(
     cacheDir,
     isAddMaintainersAsReviewers,
     isDryRun,
-    isVerbose,
     maintainers,
     maxSetupPyLineLength,
     newBranchName,
@@ -46,6 +45,24 @@ export async function makeUpdateMaintainersPr(
     version,
   } = MakeUpdateMaintainersPrProps.parse(props)
   if ((reposToIgnore ?? []).includes(`${repo.org}/${repo.name}`)) {
+    console.log(
+      `Skipping ${repo.org}/${repo.name} because it is in the ignore list`,
+    )
+    return
+  }
+
+  const prTitle = `[${version.toLowerCase()}] Update maintainers - ${titleUniqueIdentifier}`
+  const alreadyOpen = await github.isPrAlreadyOpen({
+    name: repo.name,
+    org: repo.org,
+    targetBranch: version,
+    title: prTitle,
+  })
+
+  if (alreadyOpen) {
+    console.log(
+      `Skipping ${repo.org}/${repo.name} because a PR with the same title is already open`,
+    )
     return
   }
 
@@ -79,37 +96,38 @@ export async function makeUpdateMaintainersPr(
     isDryRun,
   })
 
-  const title = `[${version.toUpperCase()}] Update maintainers - ${titleUniqueIdentifier}`
-  const body = endent`
+  if (!isDryRun) {
+    const {
+      data: {number: pull_number},
+    } = await github.rest.pulls.create({
+      owner: repo.org,
+      repo: repo.name,
+      title: prTitle,
+      head: newBranchName,
+      base: version,
+      body: endent`
         This PR updates the maintainers and code owners. The new maintainers are:
         ${newMaintainers
           .map((maintainer) => `* ${maintainer.name} (@${maintainer.id})`)
           .join('\n')}
 
         This PR was made with ${projectUrl}.
-      `
-
-  const alreadyOpen = await github.isPrAlreadyOpen({
-    name: repo.name,
-    org: repo.org,
-    targetBranch: version,
-    title,
-  })
-  if (!alreadyOpen) {
-    await makePullRequest({
-      repoPath,
-      title,
-      body,
-      repo: `${repo.org}/${repo.name}`,
-      baseBranchName: version,
-      reviewerIds: isAddMaintainersAsReviewers
+      `,
+    })
+    if (!githubUserName) {
+      githubUserName = (await github.rest.users.getAuthenticated()).data.login
+    }
+    await github.rest.pulls.requestReviewers({
+      owner: repo.org,
+      repo: repo.name,
+      pull_number,
+      reviewers: (isAddMaintainersAsReviewers
         ? combineLists(repo.maintainers, additionalReviewers)
-        : additionalReviewers,
-      isDryRun,
-      isVerbose,
+        : additionalReviewers
+      ).filter((reviewer) => reviewer !== githubUserName),
     })
   } else {
-    console.log(`PR already open for ${repo.name}`)
+    console.log(`Would open a PR for ${repo.name}`)
   }
 }
 
