@@ -57,7 +57,8 @@ export async function main() {
 
   // run it!
   const errors: {repoName: string; error: unknown}[] = []
-  for await (const repo of repositories.slice(40, 60)) { // last did up to 60
+  for await (const repo of repositories.slice(40, 60)) {
+    // last did up to 60
     try {
       await makeUpdateMaintainersPr({
         additionalReviewers,

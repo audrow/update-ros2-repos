@@ -48,6 +48,7 @@ The following files are created or modified:
 
    This script will also output a list of all the repositories that failed to update (usually because of inconsistencies, such as having no authors listed).
    You can then manually update those repositories.
+
 3. You can use the [`update-maintainers-for-one-repository.ts`](./scripts/update-maintainers-for-one-repository.ts) script to update individual repositories.
    My (@audrow) suggestion is to use VS Code and create a breakpoint in [`update-repository-maintainers.ts`](./src/update-repository-maintainers.ts).
    When you hit the breakpoint, you can use a terminal to go to the repository and change the files in question.
@@ -64,10 +65,10 @@ The following files are created or modified:
   This isn't particularly hard, it just requires work, so I haven't done it yet.
 
 ### Nice to have but probably won't add
+
 - Handle the case where there is no `author` tag in a `package.xml` file.
   Currently, I use REGEX to find the author tag, and if there is no author tag, the script fails.
   This is probably not worth fixing since once it is fixed, there should be very few new exceptions.
 - Run schema validation on the files modified.
 - Add authors to `setup.py` files.
   Although it's unclear how we'll use `setup.py` files with newer versions of Python, since they've moved to something else.
-
