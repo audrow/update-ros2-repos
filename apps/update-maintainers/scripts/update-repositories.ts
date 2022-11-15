@@ -81,7 +81,7 @@ export async function main() {
   if (errors.length > 0) {
     console.error('Finished with errors:')
     for (const {error, repoName} of errors) {
-      console.error(` - ${repoName}: ${JSON.stringify(error, null, 2)}`)
+      console.error(` - ${repoName}: ${error}`)
     }
     process.exit(1)
   }
