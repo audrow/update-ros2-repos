@@ -15,7 +15,7 @@ export async function main() {
   const version = 'rolling'
   const maxSetupPyLineLength = 99
   const newBranchName = 'audrow/update-maintainers'
-  const isDryRun = false
+  const isDryRun = true
   const isForceRefresh = true
 
   const isAddMaintainersAsReviewers = true
