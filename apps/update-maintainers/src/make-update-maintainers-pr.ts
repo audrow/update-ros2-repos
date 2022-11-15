@@ -59,7 +59,7 @@ export async function makeUpdateMaintainersPr(
     title: prTitle,
   })
 
-  if (alreadyOpen) {
+  if (alreadyOpen && !isDryRun) {
     console.log(
       `Skipping ${repo.org}/${repo.name} because a PR with the same title is already open`,
     )

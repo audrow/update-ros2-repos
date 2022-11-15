@@ -35,7 +35,6 @@ export async function updateRepositoryMaintainers(options: UpdateRepoOptions) {
 
   await fileSystem.createNewBranch({repoPath, newBranchName, baseBranchName})
 
-  let isAddCodeOwners = true
   try {
     console.log(`Adding CODEOWNERS file to ${repoName}`)
     const ids = maintainers.map((m) => m.id)
@@ -56,10 +55,9 @@ export async function updateRepositoryMaintainers(options: UpdateRepoOptions) {
       `Failed to add CODEOWNERS file to ${repoName}: `,
       JSON.stringify(error, null, 2),
     )
-    isAddCodeOwners = false
+    throw error
   }
 
-  let isUpdateMaintainers = true
   try {
     console.log(`Updating Maintainers files in ${repoName}`)
     await updatePackageXmlMaintainers({repoPath, maintainers})
@@ -82,11 +80,7 @@ export async function updateRepositoryMaintainers(options: UpdateRepoOptions) {
         JSON.stringify(error, null, 2),
       )
     }
-    isUpdateMaintainers = false
-  }
-  return {
-    isAddCodeOwners,
-    isUpdateMaintainers,
+    throw error
   }
 }
 
