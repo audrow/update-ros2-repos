@@ -89,12 +89,18 @@ export async function makeUpdateMaintainersPr(
     generatedByRepoUrl: projectUrl,
   })
 
-  await fileSystem.pushRepo({
-    repoPath,
-    branch: newBranchName,
-    remote: 'origin',
-    isDryRun,
-  })
+  if (!alreadyOpen) {
+    await fileSystem.pushRepo({
+      repoPath,
+      branch: newBranchName,
+      remote: 'origin',
+      isDryRun,
+    })
+  } else {
+    console.log(
+      `Skipping pushing to ${repo.org}/${repo.name} because a PR with the same title is already open`,
+    )
+  }
 
   if (!isDryRun) {
     const {
