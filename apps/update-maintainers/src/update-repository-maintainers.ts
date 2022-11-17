@@ -17,6 +17,7 @@ export const updateRepoOptionsSchema = z
     newBranchName: z.string(),
     baseBranchName: z.string(),
     generatedByRepoUrl: z.string().url().optional(),
+    isSkipPackageXmlIfFails: z.boolean(),
   })
   .merge(setupPy.setMaintainersOptionsSchema)
   .merge(MaintainersInfo)
@@ -31,6 +32,7 @@ export async function updateRepositoryMaintainers(options: UpdateRepoOptions) {
     newBranchName,
     baseBranchName,
     generatedByRepoUrl,
+    isSkipPackageXmlIfFails,
   } = updateRepoOptionsSchema.parse(options)
 
   await fileSystem.createNewBranch({repoPath, newBranchName, baseBranchName})
@@ -80,7 +82,9 @@ export async function updateRepositoryMaintainers(options: UpdateRepoOptions) {
         JSON.stringify(error, null, 2),
       )
     }
-    throw error
+    if (!isSkipPackageXmlIfFails) {
+      throw error
+    }
   }
 }
 

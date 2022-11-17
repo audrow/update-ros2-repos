@@ -16,6 +16,7 @@ export async function main() {
   const newBranchName = 'audrow/update-maintainers'
   const isDryRun = false
   const isForceRefresh = true
+  const isSkipPackageXmlIfFails = false
   const reposToIgnore = [
     'ros2/ros2_documentation',
     'ros2/rclpy', // do Humble
@@ -64,6 +65,7 @@ export async function main() {
         cacheDir,
         isAddMaintainersAsReviewers,
         isDryRun,
+        isSkipPackageXmlIfFails,
         maintainers,
         maxSetupPyLineLength,
         newBranchName,

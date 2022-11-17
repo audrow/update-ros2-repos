@@ -17,6 +17,7 @@ export async function main() {
   const newBranchName = 'audrow/update-maintainers'
   const isDryRun = true
   const isForceRefresh = true
+  const isSkipPackageXmlIfFails = false
 
   const isAddMaintainersAsReviewers = true
   const additionalReviewers = ['clalancette']
@@ -56,6 +57,7 @@ export async function main() {
     cacheDir,
     isAddMaintainersAsReviewers,
     isDryRun,
+    isSkipPackageXmlIfFails,
     maintainers,
     maxSetupPyLineLength,
     newBranchName,

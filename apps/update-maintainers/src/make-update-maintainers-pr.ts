@@ -12,6 +12,7 @@ export const MakeUpdateMaintainersPrProps = z.object({
   cacheDir: z.string(),
   isAddMaintainersAsReviewers: z.boolean(),
   isDryRun: z.boolean(),
+  isSkipPackageXmlIfFails: z.boolean().optional(),
   maintainers: Maintainer.array(),
   maxSetupPyLineLength: z.number(),
   newBranchName: z.string(),
@@ -35,6 +36,7 @@ export async function makeUpdateMaintainersPr(
     cacheDir,
     isAddMaintainersAsReviewers,
     isDryRun,
+    isSkipPackageXmlIfFails,
     maintainers,
     maxSetupPyLineLength,
     newBranchName,
@@ -87,6 +89,7 @@ export async function makeUpdateMaintainersPr(
     newBranchName,
     baseBranchName: version,
     generatedByRepoUrl: projectUrl,
+    isSkipPackageXmlIfFails,
   })
 
   if (!alreadyOpen) {
