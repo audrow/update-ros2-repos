@@ -17,7 +17,7 @@ export const updateRepoOptionsSchema = z
     newBranchName: z.string(),
     baseBranchName: z.string(),
     generatedByRepoUrl: z.string().url().optional(),
-    isSkipPackageXmlIfFails: z.boolean(),
+    isSkipPackageXmlIfFails: z.boolean().optional(),
   })
   .merge(setupPy.setMaintainersOptionsSchema)
   .merge(MaintainersInfo)
